@@ -5,7 +5,6 @@ import com.maxrzhe.kobweb.models.Section
 import com.maxrzhe.kobweb.models.Theme
 import com.maxrzhe.kobweb.styles.LogoStyle
 import com.maxrzhe.kobweb.styles.NavigationItemStyle
-import com.maxrzhe.kobweb.util.Constants
 import com.maxrzhe.kobweb.util.Constants.FONT_FAMILY
 import com.maxrzhe.kobweb.util.Res
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -30,7 +29,7 @@ fun Header() {
   val breakpoint = rememberBreakpoint()
   Row(
     modifier = Modifier
-      .fillMaxWidth(if (breakpoint > Breakpoint.MD) 80.percent else 90.percent)
+      .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
       .margin(topBottom = 50.px),
     horizontalArrangement = Arrangement.SpaceBetween,
     verticalAlignment = Alignment.CenterVertically

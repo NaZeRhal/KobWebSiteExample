@@ -1,6 +1,7 @@
 package com.maxrzhe.kobweb.pages
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import com.maxrzhe.kobweb.sections.AboutMeSection
 import com.maxrzhe.kobweb.sections.MainSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -18,5 +19,6 @@ fun HomePage() {
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     MainSection()
+    AboutMeSection()
   }
 }

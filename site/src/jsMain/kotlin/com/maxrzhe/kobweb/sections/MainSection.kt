@@ -26,7 +26,6 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.components.style.toAttrs
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.jetbrains.compose.web.css.percent
@@ -37,7 +36,6 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun MainSection() {
-  val breakpoint = rememberBreakpoint()
   Box(
     modifier = Modifier
       .id(Section.Home.id)
@@ -45,7 +43,7 @@ fun MainSection() {
     contentAlignment = Alignment.TopCenter
   ) {
     MainBackground()
-    MainContent(breakpoint = breakpoint)
+    MainContent()
   }
 }
 
@@ -59,7 +57,9 @@ fun MainBackground() {
 }
 
 @Composable
-fun MainContent(breakpoint: Breakpoint) {
+fun MainContent() {
+  val breakpoint = rememberBreakpoint()
+
   Column(
     modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.SpaceBetween,
@@ -73,7 +73,7 @@ fun MainContent(breakpoint: Breakpoint) {
     ) {
       SimpleGrid(
         modifier = Modifier.fillMaxWidth(
-          if (breakpoint > Breakpoint.MD)
+          if (breakpoint >= Breakpoint.MD)
             80.percent
           else
             90.percent
@@ -84,7 +84,6 @@ fun MainContent(breakpoint: Breakpoint) {
         MainImage()
       }
     }
-
   }
 }
 
@@ -94,7 +93,7 @@ fun MainText(breakpoint: Breakpoint) {
     horizontalArrangement = Arrangement.Center,
     verticalAlignment = Alignment.CenterVertically
   ) {
-    if (breakpoint > Breakpoint.MD) {
+    if (breakpoint >= Breakpoint.MD) {
       SocialBar()
     }
     Column {
@@ -102,7 +101,7 @@ fun MainText(breakpoint: Breakpoint) {
         attrs = Modifier
           .margin(topBottom = 0.px)
           .fontFamily(FONT_FAMILY)
-          .fontSize(if (breakpoint > Breakpoint.LG) 45.px else 20.px)
+          .fontSize(if (breakpoint >= Breakpoint.LG) 45.px else 20.px)
           .fontWeight(FontWeight.Normal)
           .color(Theme.Primary.rgb)
           .toAttrs()
@@ -113,7 +112,7 @@ fun MainText(breakpoint: Breakpoint) {
         attrs = Modifier
           .margin(top = 20.px, bottom = 0.px)
           .fontFamily(FONT_FAMILY)
-          .fontSize(if (breakpoint > Breakpoint.LG) 68.px else 40.px)
+          .fontSize(if (breakpoint >= Breakpoint.LG) 68.px else 40.px)
           .fontWeight(FontWeight.Bolder)
           .color(Theme.Secondary.rgb)
           .toAttrs()
